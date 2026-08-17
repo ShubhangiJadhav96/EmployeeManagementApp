@@ -1,0 +1,19 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.rsuser
+
+# Build folders
+bin/
+obj/
+
+# Test results
+TestResults/
+
+# Rider
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
