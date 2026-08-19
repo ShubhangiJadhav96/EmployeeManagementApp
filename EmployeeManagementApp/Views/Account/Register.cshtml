@@ -1,0 +1,91 @@
+﻿@model EmployeeManagementApp.ViewModels.Account.RegisterViewModel
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = null;
+    string apiurl = Configuration.GetSection("APIUrl")["Url"];
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Employee Management System - Register</title>
+
+    <link rel="stylesheet" href="~/lib/AdminLTE/plugins/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="~/lib/AdminLTE/Dist/css/adminlte.css" />
+    <link rel="stylesheet" href="~/css/auth.css" asp-append-version="true" />
+</head>
+<body class="hold-transition register-page">
+
+    <div class="register-box">
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="#" class="h1"><b>Employee</b>MS</a>
+            </div>
+
+            <div class="card-body">
+                <p class="login-box-msg">Register a new account</p>
+
+                <form asp-action="Register" asp-controller="Account" method="post">
+                    <div class="input-group mb-3">
+                        <input asp-for="FullName" class="form-control" placeholder="Full Name" />
+                        <div class="input-group-append">
+                            <div class="input-group-text"><span class="fas fa-user"></span></div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+
+                    <div class="input-group mb-3">
+                        <input asp-for="Email" class="form-control" placeholder="Email" />
+                        <div class="input-group-append">
+                            <div class="input-group-text"><span class="fas fa-envelope"></span></div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                    <div class="input-group mb-3">
+                        <input asp-for="Password" class="form-control" placeholder="Password" autocomplete="new-password" />
+                        <div class="input-group-append">
+                            <div class="input-group-text"><span class="fas fa-lock"></span></div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+                    <div class="input-group mb-3">
+                        <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" autocomplete="new-password" />
+                        <div class="input-group-append">
+                            <div class="input-group-text"><span class="fas fa-lock"></span></div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                </form>
+
+                <p class="mt-3 mb-0 text-center">
+                    <a asp-controller="Account" asp-action="Login" class="btn btn-link btn-block">Already have an account? Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/AdminLTE/plugins/jquery/jquery.min.js"></script>
+    <script src="~/lib/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/AdminLTE/Dist/js/adminlte.js"></script>
+
+    <input type="hidden" id="apiurlvalue" value="@apiurl" />
+    <script>
+        var APIURL = $("#apiurlvalue").val();
+    </script>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/lib/bootbox/bootbox.min.js"></script>
+    <script src="~/js/common.js" asp-append-version="true"></script>
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="~/js/register.js" asp-append-version="true"></script>
+</body>
+</html>

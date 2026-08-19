@@ -1,0 +1,13 @@
+﻿.login-page,
+.register-page {
+    background-color: #f4f6f9;
+}
+
+.login-box,
+.register-box {
+    width: 400px;
+}
+
+.login-card {
+    border-radius: 10px;
+}

@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@* @inject Microsoft.Extensions.Configuration.IConfiguration Configuration *@
+@inject IConfiguration Configuration;
+
+<!DOCTYPE html>
+@{
+    string apiurl = @Configuration.GetSection("APIUrl")["Url"];
+
+}
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -308,6 +315,8 @@
             </section>
             <!-- /.content -->
         </div>
+        <input type="hidden" id="apiurlvalue" value="@apiurl" />
+
         <!-- /.content-wrapper -->
 
         @* <footer class="main-footer">
@@ -380,6 +389,9 @@
     </script>
 
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        var APIURL = $("#apiurlvalue").val();
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,0 +1,102 @@
+﻿@model EmployeeManagementApp.ViewModels.Account.LoginViewModel
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+    string apiurl = Configuration.GetSection("APIUrl")["Url"];
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Employee Management System - Login</title>
+
+    <link rel="stylesheet" href="~/lib/AdminLTE/plugins/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="~/lib/AdminLTE/Dist/css/adminlte.css" />
+    <link rel="stylesheet" href="~/css/auth.css" asp-append-version="true" />
+</head>
+<body class="hold-transition login-page">
+
+    <div class="login-box">
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="#" class="h1"><b>Employee</b>MS</a>
+            </div>
+
+            <div class="card-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+
+                <form asp-action="Login" asp-controller="Account" method="post">
+                    <table class="table table-borderless mb-2">
+                        <tbody>
+                            <tr>
+                                <td class="text-nowrap align-middle" style="width:40px;">
+                                    <span class="fas fa-envelope"></span>
+                                </td>
+                                <td>
+                                    <input asp-for="Email" class="form-control" placeholder="Email" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-nowrap align-middle">
+                                    <span class="fas fa-lock"></span>
+                                </td>
+                                <td>
+                                    <input asp-for="Password" class="form-control" placeholder="Password" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <div class="form-check">
+                                        <input asp-for="RememberMe" type="checkbox" class="form-check-input" id="rememberMe" />
+                                        <label class="form-check-label" for="rememberMe">Remember Me</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button type="submit" id="btnLogin" class="btn btn-primary btn-block">Login</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+
+                <p class="mb-0 mt-3 text-center">
+                    <a asp-controller="Account" asp-action="Register">Register a new account</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/AdminLTE/plugins/jquery/jquery.min.js"></script>
+    <script src="~/lib/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/AdminLTE/Dist/js/adminlte.js"></script>
+    <script src="~/lib/bootbox/bootbox.min.js"></script>
+    <script src="~/js/common.js" asp-append-version="true"></script>
+    <script src="~/js/Login.js" asp-append-version="true"></script>
+    <input type="hidden" id="apiurlvalue" value="@apiurl" />
+    <script>
+        var APIURL = $("#apiurlvalue").val();
+    </script>
+
+    <!-- bootbox is needed by showMessageDialog() in Login.js -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/lib/bootbox/bootbox.min.js"></script>
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="~/js/Login.js" asp-append-version="true"></script>
+    <script src="~/lib/bootbox/bootbox.min.js"></script>
+    <script src="~/js/common.js" asp-append-version="true"></script>
+    <script src="~/js/Login.js" asp-append-version="true"></script>
+</body>
+</html>
+
