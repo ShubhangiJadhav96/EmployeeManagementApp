@@ -25,6 +25,12 @@
     <link rel="stylesheet" href="~/EmployeeManagementApp.styles.css" asp-append-version="true" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+    <script>
+            // Guard: if no auth token exists, kick the user back to Login immediately
+            if (!sessionStorage.getItem("authToken")) {
+                window.location.replace("/Account/Login");
+            }
+    </script>
     <div class="wrapper">
 
         <!-- Navbar -->
