@@ -77,6 +77,7 @@ function loginUser() {
 
             if (response && response.token) {
                 sessionStorage.setItem("authToken", response.token);
+                sessionStorage.setItem("authRole", getCurrentUserRole()); // NEW LINE
                 showMessageDialog("Login successful", SUCCESS);
                 window.location.href = "/Home/Index";
             } else {

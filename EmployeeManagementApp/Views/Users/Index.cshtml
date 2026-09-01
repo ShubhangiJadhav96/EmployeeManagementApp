@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">All Users</h3>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped" id="usersTable">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th style="width:100px;">Action</th>
+                </tr>
+            </thead>
+            <tbody id="usersTableBody">
+                <!-- rows injected by Users.js -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Edit Role Modal -->
+<div class="modal fade" id="editRoleModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Change User Role</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editUserId" />
+                <p>Editing role for: <strong id="editUserName"></strong></p>
+                <div class="form-group">
+                    <label>Role</label>
+                    <select class="form-control" id="editRoleSelect">
+                        <option value="Admin">Admin</option>
+                        <option value="HR">HR</option>
+                        <option value="Employee">Employee</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="btnSaveRole">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Guard: only Admins can view this page
+        if (sessionStorage.getItem("authRole") !== "Admin") {
+            window.location.replace("/Home/Index");
+        }
+    </script>
+    <script src="~/lib/bootbox/bootbox.min.js"></script>
+    <script src="~/js/common.js" asp-append-version="true"></script>
+    <script src="~/js/Users.js" asp-append-version="true"></script>
+}
