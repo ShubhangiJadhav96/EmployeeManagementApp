@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EmployeeManagementApp.styles.css" asp-append-version="true" />
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed" layout-navbar-fixed>
     <script>
             // Guard: if no auth token exists, kick the user back to Login immediately
             if (!sessionStorage.getItem("authToken")) {

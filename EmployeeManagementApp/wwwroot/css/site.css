@@ -20,3 +20,15 @@ html {
 body {
   margin-bottom: 60px;
 }
+.main-header.navbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+}
+
+.content-wrapper,
+.main-footer {
+    margin-top: 56px; /* navbar height, standard AdminLTE size */
+}
